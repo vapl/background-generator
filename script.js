@@ -1,32 +1,21 @@
-let css = document.querySelector("h3");
-let color1 = document.querySelector(".color1");
-let color2 = document.querySelector(".color2");
-let body = document.getElementById("gradient");
-let button = document.getElementById("gen-button");
+const colorPiker1 = document.querySelector("#color-1");
+const colorPiker2 = document.querySelector("#color-2");
+const h3 = document.querySelector("h3");
+const background = document.querySelector("body");
 
-function gradientStyle() {
-    body.style.background = "linear-gradient(to right, " + color1.value + ", " + color2.value + ")";
+// background default values
+background.style.setProperty("--color-1", colorPiker1.value);
+background.style.setProperty("--color-2", colorPiker2.value);
 
-    css.textContent = body.style.background + ";";
-}
+// background color picker values
+addEventListener("input", (event) => {
+    if (event.target.id === "color-1") {
+        background.style.setProperty("--color-1", event.target.value);
+    } else if (event.target.id === "color-2") {
+        background.style.setProperty("--color-2", event.target.value);
+    }
+    let color1 = getComputedStyle(background).getPropertyValue("--color-1");
+    let color2 = getComputedStyle(background).getPropertyValue("--color-2");
+    h3.innerText = `linear-gradient(to right, ${color1}, ${color2});`
+})
 
-color1.addEventListener("input", gradientStyle);
-color2.addEventListener("input", gradientStyle);
-
-function rgbGenerator(){
-    let rgbGen1x = Math.floor(Math.random() * 256);
-    let rgbGen2x = Math.floor(Math.random() * 256);
-    let rgbGen3x = Math.floor(Math.random() * 256);
-
-    let rgbGen1y = Math.floor(Math.random() * 256);
-    let rgbGen2y = Math.floor(Math.random() * 256);
-    let rgbGen3y = Math.floor(Math.random() * 256);
-
-    let randomRgb1 = "rgb(" + rgbGen1x + ", " + rgbGen2x + ", " + rgbGen3x + ")";
-    let randomRgb2 = "rgb(" + rgbGen3y + ", " + rgbGen1y + ", " + rgbGen2y + ")";
-
-    body.style.background = "linear-gradient(to right, " + randomRgb1 + ", " + randomRgb2 + ")";
-    css.textContent = body.style.background + ";";
-}
-    
-button.addEventListener("click", rgbGenerator);

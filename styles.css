@@ -1,0 +1,27 @@
+body {
+    font-family: "Releway", sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, var(--color-1), var(--color-2));
+    text-align: center;
+}
+
+h1 {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+h2 {
+    color: rgba(255, 255, 255, 0.815);
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+
+h3 {
+    color: rgba(247, 243, 243, 0.815);
+    font-size: 1.2rem;
+    text-transform: lowercase;
+    font-style: italic;
+}
